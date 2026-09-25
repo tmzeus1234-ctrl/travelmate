@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Results - Kerala Bus Tracker</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Buses - TRAVEL MATE</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1 id="heading">Results</h1>
-    <div id="output">Loading...</div>
-    <button onclick="window.location.href='index.html'" style="margin-top:20px;">New Search</button>
+    <div class="app-header">
+      <h1 class="app-title">🚌 TRAVEL MATE</h1>
+      <p class="app-subtitle" id="searchSummary">Available Transit Routes & Buses</p>
+    </div>
+
+    <!-- Search Query Banner -->
+    <div id="queryBanner" class="banner banner-info" style="display: none;"></div>
+
+    <!-- Main Dynamic Output -->
+    <div id="output">
+      <div class="empty-state">
+        <div class="empty-state-icon">⏳</div>
+        <p>Loading matching routes and bus schedules...</p>
+      </div>
+    </div>
+
+    <button onclick="window.location.href='index.html'" class="btn-secondary" style="margin-top: 24px;">
+      ← Modify Search / New Route
+    </button>
   </div>
 
+  <!-- Firebase v10 Compat Mode SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database-compat.js"></script>

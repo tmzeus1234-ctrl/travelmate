@@ -1,42 +1,379 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ===================================================
+   TRAVEL MATE - Modern Responsive Transit Stylesheet
+   =================================================== */
+
+:root {
+  --primary: #1b5e20;
+  --primary-light: #2e7d32;
+  --primary-dark: #003300;
+  --accent: #ff8f00;
+  --accent-light: #fff3e0;
+  --bg-color: #f4f7f6;
+  --card-bg: #ffffff;
+  --text-main: #212529;
+  --text-muted: #667085;
+  --border-color: #e2e8f0;
+  --live-color: #10b981;
+  --offline-color: #94a3b8;
+  --danger: #ef4444;
+  --radius: 12px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f4f6f8;
-  color: #1a1a1a;
-  padding: 20px;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.5;
+  padding: 24px 16px;
+  min-height: 100vh;
 }
-.container { max-width: 500px; margin: 0 auto; }
-h1 { color: #1b5e20; margin-bottom: 20px; font-size: 1.5rem; }
-label { display: block; margin-top: 14px; font-weight: 600; font-size: 0.9rem; }
-select, button {
+
+.container {
+  max-width: 540px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+/* Header Styles */
+.app-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.app-title {
+  color: var(--primary);
+  font-size: 1.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.app-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Form Controls */
+.form-group {
+  margin-bottom: 16px;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+select, input, button {
   width: 100%;
-  padding: 12px;
-  margin-top: 6px;
+  padding: 12px 14px;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+  border: 1.5px solid var(--border-color);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background-color: #fff;
+  color: var(--text-main);
 }
-button {
-  background: #1b5e20;
+
+select:focus, input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.12);
+}
+
+/* Swap Button */
+.swap-container {
+  display: flex;
+  justify-content: center;
+  margin: -6px 0 10px 0;
+}
+
+.btn-swap {
+  width: auto;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 0;
+}
+
+.btn-swap:hover {
+  background: #e2e8f0;
+}
+
+/* Primary Button */
+.btn-primary {
+  background: var(--primary);
   color: white;
   border: none;
-  margin-top: 20px;
+  font-weight: 600;
   cursor: pointer;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-light);
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+.btn-secondary {
+  background: #e2e8f0;
+  color: #334155;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.btn-secondary:hover {
+  background: #cbd5e1;
+}
+
+/* Banner / Badges */
+.banner {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  margin-bottom: 16px;
+}
+
+.banner-info {
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+.banner-warning {
+  background: #fefce8;
+  color: #854d0e;
+  border: 1px solid #fef08a;
+}
+
+/* Route Cards & Results */
+.route-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin: 20px 0 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.route-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-direct {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.badge-transfer {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.bus-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 12px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.bus-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.bus-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.reg-number {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.operator-badge {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
   font-weight: 600;
 }
-button:hover { background: #164a1a; }
-.bus-card {
-  background: white;
-  border-radius: 10px;
-  padding: 14px;
-  margin-top: 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  cursor: pointer;
+
+.bus-meta {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
 }
-.bus-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
-.reg-number { font-weight: 700; color: #1b5e20; font-size: 1.05rem; }
-.bus-meta { font-size: 0.85rem; color: #555; margin-top: 4px; }
-#map { height: 320px; border-radius: 10px; margin-top: 14px; }
-.status-live { color: #2e7d32; font-weight: 600; }
-.status-offline { color: #999; font-weight: 600; }
-.route-stops { font-size: 0.85rem; color: #444; margin-top: 10px; line-height: 1.6; }
+
+.route-stops {
+  font-size: 0.8rem;
+  color: #475569;
+  margin-top: 10px;
+  line-height: 1.5;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border-left: 3px solid var(--primary);
+}
+
+.transfer-box {
+  background: #fffbeb;
+  border: 1px dashed #f59e0b;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 14px 0;
+  font-size: 0.85rem;
+  color: #92400e;
+}
+
+/* Map & Live Tracking View */
+#map {
+  height: 340px;
+  border-radius: 10px;
+  margin-top: 14px;
+  border: 1px solid var(--border-color);
+  z-index: 1;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.status-live {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.status-offline {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--live-color);
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* Telemetry & ETA Grid */
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.telemetry-card {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.telemetry-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.telemetry-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 4px;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-muted);
+}
+
+.empty-state-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}

@@ -1,22 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Bus Details</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Bus Tracking - TRAVEL MATE</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
   <div class="container">
-    <h1 id="regNumber">Loading...</h1>
-    <div class="bus-meta" id="meta"></div>
-    <div id="status" class="status-offline">No live data — showing schedule only</div>
+    <div class="app-header">
+      <h1 class="app-title">📍 Live Bus Tracker</h1>
+      <p class="app-subtitle">Real-Time Telemetry & Arrival Estimation</p>
+    </div>
 
+    <!-- Bus Header Card -->
+    <div class="bus-card" style="cursor: default; margin-top: 0;">
+      <div class="bus-card-header">
+        <span class="reg-number" id="regNumber">Connecting...</span>
+        <span class="operator-badge" id="operatorBadge">Transit</span>
+      </div>
+      <div class="bus-meta" id="busMeta">Loading bus details...</div>
+      
+      <!-- Live Status Pill -->
+      <div style="margin-top: 10px;">
+        <div id="statusPill" class="status-pill status-offline">
+          <span id="pulseIndicator"></span>
+          <span id="statusText">Checking live telemetry...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Telemetry & ETA Grid -->
+    <div class="telemetry-grid">
+      <div class="telemetry-card">
+        <div class="telemetry-label">Distance to You</div>
+        <div class="telemetry-value" id="distanceVal">--</div>
+      </div>
+      <div class="telemetry-card">
+        <div class="telemetry-label">Estimated Arrival (ETA)</div>
+        <div class="telemetry-value" id="etaVal">--</div>
+      </div>
+      <div class="telemetry-card">
+        <div class="telemetry-label">Current Speed</div>
+        <div class="telemetry-value" id="speedVal">--</div>
+      </div>
+      <div class="telemetry-card">
+        <div class="telemetry-label">Telemetry Age</div>
+        <div class="telemetry-value" id="lastUpdatedVal">--</div>
+      </div>
+    </div>
+
+    <!-- Leaflet OpenStreetMap Container -->
     <div id="map"></div>
 
-    <button id="shareBtn">📍 Share My Location (I'm on this bus)</button>
+    <!-- Location & Crowdsource Controls -->
+    <div style="margin-top: 18px;">
+      <button id="locateUserBtn" class="btn-secondary" style="margin-top: 0; margin-bottom: 8px;">
+        🧭 Measure My Distance & ETA
+      </button>
+      <button id="shareBtn" class="btn-primary" style="margin-top: 0;">
+        📍 Share My Location (I'm on this bus)
+      </button>
+    </div>
+
+    <button onclick="window.location.href='results.html'" class="btn-secondary" style="margin-top: 14px;">
+      ← Back to Search Results
+    </button>
   </div>
 
+  <!-- Leaflet & Firebase v10 Compat Mode SDKs -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>

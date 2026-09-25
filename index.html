@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>TRAVEL MATE</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRAVEL MATE - Smart Public Transport Discovery</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>🚌TRAVEL MATE</h1>
-    <label for="from">From</label>
-    <select id="from"></select>
+    <div class="app-header">
+      <h1 class="app-title">🚌 TRAVEL MATE</h1>
+      <p class="app-subtitle">Real-Time Route Discovery & Live Bus Tracking</p>
+    </div>
 
-    <label for="to">To</label>
-    <select id="to"></select>
+    <!-- Notification Banner for network/fallback status -->
+    <div id="statusBanner" style="display: none;" class="banner"></div>
 
-    <button id="searchBtn">Search Buses</button>
+    <div class="form-group">
+      <label for="from">Boarding Stop (From)</label>
+      <select id="from">
+        <option value="" disabled selected>Loading bus stops...</option>
+      </select>
+    </div>
+
+    <div class="swap-container">
+      <button type="button" id="swapBtn" class="btn-swap" title="Swap Boarding and Destination Stops">
+        ⇅ Swap Stops
+      </button>
+    </div>
+
+    <div class="form-group">
+      <label for="to">Destination Stop (To)</label>
+      <select id="to">
+        <option value="" disabled selected>Loading bus stops...</option>
+      </select>
+    </div>
+
+    <button id="searchBtn" class="btn-primary">Find Routes</button>
   </div>
 
-  <!-- Firebase SDKs (compat version — simplest for beginners) -->
+  <!-- Firebase v10 Compat Mode SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database-compat.js"></script>
