@@ -1,0 +1,42 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f6f8;
+  color: #1a1a1a;
+  padding: 20px;
+}
+.container { max-width: 500px; margin: 0 auto; }
+h1 { color: #1b5e20; margin-bottom: 20px; font-size: 1.5rem; }
+label { display: block; margin-top: 14px; font-weight: 600; font-size: 0.9rem; }
+select, button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+button {
+  background: #1b5e20;
+  color: white;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+button:hover { background: #164a1a; }
+.bus-card {
+  background: white;
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.bus-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+.reg-number { font-weight: 700; color: #1b5e20; font-size: 1.05rem; }
+.bus-meta { font-size: 0.85rem; color: #555; margin-top: 4px; }
+#map { height: 320px; border-radius: 10px; margin-top: 14px; }
+.status-live { color: #2e7d32; font-weight: 600; }
+.status-offline { color: #999; font-weight: 600; }
+.route-stops { font-size: 0.85rem; color: #444; margin-top: 10px; line-height: 1.6; }
